@@ -33,7 +33,7 @@ let hideOneShowOne = (request, targetHide, targetShow) => {
   request.addEventListener("click", function () {
     hide(targetHide) & show(targetShow);
   });
-};
+}
 
 const getTime = (separator) => {
   let separateWith = separator == null ? ":" : separator;
