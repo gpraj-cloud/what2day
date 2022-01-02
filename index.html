@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RemindME</title>
+    <meta name="theme-color" content="#ffff">
+    <link rel="stylesheet" href="assets/css/bulma.css">
+    <link rel="stylesheet" href="assets/css/iconmonstr-iconic-font.min.css">
+    <link rel="stylesheet" href="assets/css/stylesheet.css">
+    <link rel="stylesheet" href="assets/css/bulma-calendar.min.css">
+</head>
+
+<body class="">
+
+    <div class="columns is-hidden-tablet m-0 main-section">
+        <div
+            class="column has-background-info has-text-white is-flex is-justify-content-space-between is-align-content-center p-0 nav-bar">
+            <span class="pt-3 pb-1 pl-4">
+                <span class="im im-gear is-size-3"></span>
+            </span>
+            <span class="pt-3 pb-1 pr-3">
+                <span class="im im-menu-list is-size-3 pr-2" onclick="toggle(sortBox)"></span>
+                <div class="box py-2 px-4 menu sort-box is-hidden is-size-5">
+                    <ul class="menu-list">
+                        <li><a href="javascript:showTextData('important')" class="sort-list">By Important</a></li>
+                        <li><a href="javascript:showTextData('secondary')" class="sort-list">By Secondary</a></li>
+                        <li><a href="javascript:showTextData('snoozed')" class="sort-list">By Snoozed</a></li>
+                        <li><a href="javascript:showTextData('finished')" class="sort-list">By Finished</a></li>
+                        <li><a href="javascript:showTextData('deleted')" class="sort-list">By Deleted</a></li>
+                        <li><a href="javascript:window.location = 'index.html'" class="sort-list">By Default</a></li>
+                    </ul>
+                </div>
+            </span>
+        </div>
+
+        <div class="columns is-hidden has-background-white mt-1 all-settings">
+            <div class="columns pt-2 pb-1 has-background-info has-text-centered brand-block">
+                <p class="has-text-white is-size-3">remindMe</p>
+            </div>
+            <div class="columns py-1 px-3" id="inner-settings">
+                <div class="columns is-mobile is-align-items-baseline mt-3">
+                    <div class="column has-text-right is-2">
+                        <i class="im im-edge has-text-info is-size-5"></i>
+                    </div>
+                    <div class="column has-text-left is-9">
+                        <span class="is-size-5">User manual</span>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-align-items-end" id="single-setting-open">
+                    <div class="column has-text-right is-2">
+                        <i class="im im-sun has-text-info is-size-5"></i>
+                    </div>
+                    <div class="column has-text-left is-9">
+                        <span class="is-size-5">Change theme</span>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-align-items-end" id="single-setting-open">
+                    <div class="column has-text-right is-2">
+                        <i class="im im-audio has-text-info is-size-5"></i>
+                    </div>
+                    <div class="column has-text-left is-9">
+                        <span class="is-size-5">Task tones</span>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-align-items-end" id="single-setting-open">
+                    <div class="column has-text-right is-2">
+                        <i class="im im-clock has-text-info is-size-5"></i>
+                    </div>
+                    <div class="column has-text-left is-9">
+                        <span class="is-size-5">Snooze timings</span>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-align-items-end" id="single-setting-open">
+                    <div class="column has-text-right is-2">
+                        <i class="im im-timer has-text-info is-size-5"></i>
+                    </div>
+                    <div class="column has-text-left is-9">
+                        <span class="is-size-5">Auto deletions</span>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-align-items-end">
+                    <div class="column has-text-right is-2">
+                        <i class="im im-window-o has-text-info is-size-5"></i>
+                    </div>
+                    <div class="column has-text-left is-9">
+                        <span class="is-size-5">Strict action</span>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-align-items-end" id="single-setting-open">
+                    <div class="column has-text-right is-2">
+                        <i class="im im-trash-can has-text-info is-size-5"></i>
+                    </div>
+                    <div class="column has-text-left is-9">
+                        <span class="is-size-5">Clear tasks</span>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-align-items-end" id="single-setting-open">
+                    <div class="column has-text-right is-2">
+                        <i class="im im-bug has-text-info is-size-5"></i>
+                    </div>
+                    <div class="column has-text-left is-9">
+                        <span class="is-size-5">Report bugs</span>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-align-items-end" id="single-setting-open">
+                    <div class="column has-text-right is-2">
+                        <i class="im im-info has-text-info is-size-5"></i>
+                    </div>
+                    <div class="column has-text-left is-9">
+                        <span class="is-size-5">About</span>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-align-items-end close-settings">
+                    <div class="column has-text-right is-2">
+                        <i class="im im-angle-left has-text-info is-size-5"></i>
+                    </div>
+                    <div class="column has-text-left is-9">
+                        <span class="is-size-5">Close settings</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns m-0 is-hidden change-theme" id="single-setting">
+                <div class="columns has-background-info-light is-mobile is-align-items-center mx-3 my-1 px-4"
+                    id="single-setting-close">
+                    <div class="column is-flex">
+                        <i class="im im-angle-left has-text-info is-size-5 close-icon"></i>
+                    </div>
+                    <div class="column has-text-right">
+                        <span class="is-size-5">Change theme</span>
+                    </div>
+                </div>
+
+                <div class="column px-5 py-1">
+                    <div class="field px-4 pt-2">
+                        <label class="label is-size-5">Select theme</label>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Default </label>
+                            <input type="radio" id="on-off-switch" data-value="default" name="theme" checked>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio"> Dark </label>
+                            <input type="radio" id="on-off-switch" data-value="dark" name="theme">
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Lite </label>
+                            <span class="has-text-grey-light is-size-5">Not available</span>
+                            <input type="radio" id="on-off-switch" data-value="lite" disabled name="theme">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns m-0 is-hidden task-tones" id="single-setting">
+                <div class="columns has-background-info-light is-mobile is-align-items-center mx-3 my-1 px-4"
+                    id="single-setting-close">
+                    <div class="column is-flex">
+                        <i class="im im-angle-left has-text-info is-size-5 close-icon"></i>
+                    </div>
+                    <div class="column has-text-right">
+                        <span class="is-size-5">Task tones</span>
+                    </div>
+                </div>
+
+                <div class="column px-5 py-1">
+                    <div class="field px-4 pt-2">
+                        <label class="label is-size-5">Important task tones</label>
+                        <div class="control py-2 is-flex is-justify-content-space-between is-align-items-end">
+                            <label class="radio is-size-5"> Sweet memories </label>
+                            <div
+                                class="is-flex is-align-content-center is-align-items-center is-justify-content-space-between">
+                                <span class="is-flex is-align-items-center has-text-grey px-4 important-audio">
+                                    <i class="im im-play is-size-5 px-3"></i>00 : 07
+                                    <audio src="assets/Idhazhin Oram.mp3" type="audio/mp3" controls></audio>
+                                </span>
+                                <input type="radio" id="on-off-switch" data-value="imp_0" name="important-tones">
+                            </div>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Drums with piano </label>
+                            <div
+                                class="is-flex is-align-content-center is-align-items-center is-justify-content-space-between">
+                                <span class="is-flex is-align-items-center has-text-grey px-4 important-audio">
+                                    <i class="im im-play is-size-5 px-3"></i>00 : 07
+                                    <audio src="assets/Idhazhin Oram.mp3" type="audio/mp3" controls></audio>
+                                </span>
+                                <input type="radio" id="on-off-switch" data-value="imp_1" name="important-tones">
+                            </div>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Good sleepy</label>
+                            <div
+                                class="is-flex is-align-content-center is-align-items-center is-justify-content-space-between">
+                                <span class="is-flex is-align-items-center has-text-grey px-4 important-audio">
+                                    <i class="im im-play is-size-5 px-3"></i>00 : 07
+                                    <audio src="assets/Idhazhin Oram.mp3" type="audio/mp3" controls></audio>
+                                </span>
+                                <input type="radio" id="on-off-switch" data-value="imp_2" name="important-tones">
+                            </div>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Soft rap with piano </label>
+                            <div
+                                class="is-flex is-align-content-center is-align-items-center is-justify-content-space-between">
+                                <span class="is-flex is-align-items-center has-text-grey px-4 important-audio">
+                                    <i class="im im-play is-size-5 px-3"></i>00 : 07
+                                    <audio src="assets/Idhazhin Oram.mp3" type="audio/mp3" controls></audio>
+                                </span>
+                                <input type="radio" id="on-off-switch" data-value="imp_3" name="important-tones">
+                            </div>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between is-align-items-end">
+                            <label class="radio is-size-5"> Turn off </label>
+                            <input type="radio" id="on-off-switch" data-value="imp_4" name="important-tones" checked>
+                        </div>
+                    </div>
+                    <div class="field px-4 pt-2">
+                        <label class="label is-size-5">Secondary task tones</label>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> By Important </label>
+                            <div
+                                class="is-flex is-align-content-center is-align-items-center is-justify-content-space-between">
+                                <span class="is-flex is-align-items-center has-text-grey px-4 secondary-audio">
+                                    <i class="im im-play is-size-5 px-3"></i>00 : 07
+                                    <audio src="assets/Idhazhin Oram.mp3" type="audio/mp3" controls></audio>
+                                </span>
+                                <input type="radio" id="on-off-switch" data-value="sec_0" name="secondary-tones">
+                            </div>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> By Secondary </label>
+                            <div
+                                class="is-flex is-align-content-center is-align-items-center is-justify-content-space-between">
+                                <span class="is-flex is-align-items-center has-text-grey px-4 secondary-audio">
+                                    <i class="im im-play is-size-5 px-3"></i>00 : 07
+                                    <audio src="assets/Idhazhin Oram.mp3" type="audio/mp3" controls></audio>
+                                </span>
+                                <input type="radio" id="on-off-switch" data-value="sec_1" name="secondary-tones">
+                            </div>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> By Finished </label>
+                            <div
+                                class="is-flex is-align-content-center is-align-items-center is-justify-content-space-between">
+                                <span class="is-flex is-align-items-center has-text-grey px-4 secondary-audio">
+                                    <i class="im im-play is-size-5 px-3"></i>00 : 07
+                                    <audio src="assets/Idhazhin Oram.mp3" type="audio/mp3" controls></audio>
+                                </span>
+                                <input type="radio" id="on-off-switch" data-value="sec_2" name="secondary-tones">
+                            </div>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> By Deleted </label>
+                            <div
+                                class="is-flex is-align-content-center is-align-items-center is-justify-content-space-between">
+                                <span class="is-flex is-align-items-center has-text-grey px-4 secondary-audio">
+                                    <i class="im im-play is-size-5 px-3"></i>00 : 07
+                                    <audio src="assets/Idhazhin Oram.mp3" type="audio/mp3" controls></audio>
+                                </span>
+                                <input type="radio" id="on-off-switch" data-value="sec_3" name="secondary-tones">
+                            </div>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between is-align-items-end">
+                            <label class="radio is-size-5"> Turn off </label>
+                            <input type="radio" id="on-off-switch" data-value="sec_4" name="secondary-tones" checked>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns m-0 is-hidden snooze-timings" id="single-setting">
+                <div class="columns has-background-info-light is-mobile is-align-items-center mx-3 my-1 px-4"
+                    id="single-setting-close">
+                    <div class="column is-flex">
+                        <i class="im im-angle-left has-text-info is-size-5 close-icon"></i>
+                    </div>
+                    <div class="column has-text-right">
+                        <span class="is-size-5">Snooze timings</span>
+                    </div>
+                </div>
+
+                <div class="column px-5 py-1">
+                    <div class="field px-4 pt-2">
+                        <label class="label is-size-5">Select duration</label>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> 5 minutes </label>
+                            <input type="radio" id="on-off-switch" data-value="5" name="duration" checked>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> 10 minutes </label>
+                            <input type="radio" id="on-off-switch" data-value="10" name="duration">
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> 15 minutes </label>
+                            <input type="radio" id="on-off-switch" data-value="15" name="duration">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns m-0 is-hidden auto-deletions" id="single-setting">
+                <div class="columns has-background-info-light is-mobile is-align-items-center mx-3 my-1 px-4"
+                    id="single-setting-close">
+                    <div class="column is-flex">
+                        <i class="im im-angle-left has-text-info is-size-5 close-icon"></i>
+                    </div>
+                    <div class="column has-text-right">
+                        <span class="is-size-5">Auto deletions</span>
+                    </div>
+                </div>
+
+                <div class="column px-5 py-1">
+                    <div class="field px-4 pt-2">
+                        <label class="label is-size-5">Finished tasks</label>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> One day </label>
+                            <span class="has-text-grey-light"></span>
+                            <input type="radio" id="on-off-switch" data-value="1" name="finished" checked>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Two days </label>
+                            <span class="has-text-grey-light"></span>
+                            <input type="radio" id="on-off-switch" data-value="2" name="finished">
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Three days </label>
+                            <input type="radio" id="on-off-switch" data-value="3" name="finished">
+                        </div>
+                    </div>
+                    <div class="field px-4 pt-2">
+                        <label class="label is-size-5">Deleted tasks</label>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> One day </label>
+                            <input type="radio" id="on-off-switch" data-value="1" name="deleted" checked>
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Two days </label>
+                            <input type="radio" id="on-off-switch" data-value="2" name="deleted">
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Three days </label>
+                            <input type="radio" id="on-off-switch" data-value="3" name="deleted">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns m-0 is-hidden clear-tasks" id="single-setting">
+                <div class="columns has-background-info-light is-mobile is-align-items-center mx-3 my-1 px-4"
+                    id="single-setting-close">
+                    <div class="column is-flex">
+                        <i class="im im-angle-left has-text-info is-size-5 close-icon"></i>
+                    </div>
+                    <div class="column has-text-right">
+                        <span class="is-size-5">Clear tasks</span>
+                    </div>
+                </div>
+
+                <div class="column px-5 py-1">
+                    <div class="field px-4 pt-2">
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Finished </label>
+                            <input class="button is-info" type="button" onclick="clearTasks('finished')" value="Clear">
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> Deleted </label>
+                            <input class="button is-info" type="button" onclick="clearTasks('deleted')" value="Clear">
+                        </div>
+                        <div class="control py-2 is-flex is-justify-content-space-between">
+                            <label class="radio is-size-5"> All tasks </label>
+                            <input class="button is-info" type="button" onclick="clearTasks('all')" value="Clear">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns m-0 is-hidden report-bugs" id="single-setting">
+                <div class="columns has-background-info-light is-mobile is-align-items-center mx-3 my-1 px-4"
+                    id="single-setting-close">
+                    <div class="column is-flex">
+                        <i class="im im-angle-left has-text-info is-size-5 close-icon"></i>
+                    </div>
+                    <div class="column has-text-right">
+                        <span class="is-size-5">Report bugs</span>
+                    </div>
+                </div>
+
+                <div class="column px-5 py-1">
+                    <div class="field px-4">
+                        <div class="control py-2">
+                            <label class="label snooze-label">Enter name</label>
+                            <input class="input" type="text" placeholder="Info input">
+                        </div>
+                        <div class="control py-2">
+                            <label class="label snooze-label">Enter email</label>
+                            <input class="input" type="email" placeholder="Info input">
+                        </div>
+                        <div class="control py-2">
+                            <label class="label snooze-label">What we fix</label>
+                            <textarea class="textarea"></textarea>
+                        </div>
+                        <div class="control py-2">
+                            <input class="button is-info" type="button" value="Report">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns m-0 is-hidden" id="single-setting">
+                <div class="columns has-background-info-light is-mobile is-align-items-center mx-3 my-1 px-4"
+                    id="single-setting-close">
+                    <div class="column is-flex">
+                        <i class="im im-angle-left has-text-info is-size-5 close-icon"></i>
+                    </div>
+                    <div class="column has-text-right">
+                        <span class="is-size-5">About</span>
+                    </div>
+                </div>
+
+                <div class="column px-5 py-1">
+                    <div class="field px-4 pt-2">
+                        <div class=" is-flex is-justify-content-center is-96x96 py-3 px-5">
+                            <img src="hello.png">
+                        </div>
+                        <div class="content is-small is-flex is-justify-content-space-between my-1">
+                            <h5 class="has-text-grey">App name</h5>
+                            <h5 class="has-text-grey-light">remindMe</h5>
+                        </div>
+                        <div class="content is-small is-flex is-justify-content-space-between my-1">
+                            <h5 class="has-text-grey">Current version</h5>
+                            <h5 class="has-text-grey-light">0.00.10</h5>
+                        </div>
+                        <div class="content is-small is-flex is-justify-content-space-between my-1">
+                            <h5 class="has-text-grey">Next update</h5>
+                            <h5 class="has-text-grey-light">0.00.20</h5>
+                        </div>
+                        <div class="content is-small is-flex is-justify-content-space-between  my-1">
+                            <h5 class="has-text-grey">Made in</h5>
+                            <h5 class="has-text-grey-light">Tamilnadu</h5>
+                        </div>
+                        <div class="content is-small is-flex is-justify-content-space-between my-1">
+                            <h5 class="has-text-grey">Privacy & policy</h5>
+                            <h5 class="im im-angle-right has-text-grey-light is-size-6"></h5>
+                        </div>
+                        <div class="content is-small is-flex is-justify-content-space-between my-1">
+                            <h5 class="has-text-grey">Feedback</h5>
+                            <h5 class="im im-angle-right has-text-grey-light is-size-6"></h5>
+                        </div>
+                        <div class="content is-small is-flex is-justify-content-space-between my-1">
+                            <h5 class="has-text-grey">Rate this</h5>
+                            <h5 class="im im-angle-right has-text-grey-light is-size-6"></h5>
+                        </div>                        
+                        <div class="content is-small is-flex is-justify-content-space-between my-1">
+                            <h5 class="has-text-grey">Developer</h5>
+                            <h5 class="im im-angle-right has-text-grey-light is-size-6"></h5>
+                        </div>
+                        <div class="content is-small has-text-centered my-1">
+                            <p class="has-text-grey-light">2021 remindMe</p>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column task-list p-0">
+            <div class="task-default is-hidden"></div>
+            <div class="task-important is-hidden"></div>
+            <div class="task-secondary is-hidden"></div>
+            <div class="task-snoozed is-hidden"></div>
+            <div class="task-finished is-hidden"></div>
+            <div class="task-deleted is-hidden"></div>
+        </div>
+
+        <div class="column is-flex is-flex-direction-column has-text-white task-actions">
+            <div class="is-flex is-flex-direction-column is-hidden task-actions-group">
+                <span class="im im-pencil has-background-info is-size-5 m-1 p-3 pb-2 add-text-task"></span>
+                <span class="im im-microphone has-background-info is-size-5 m-1 p-3 pb-2 add-voice-task"></span>
+                <span class="im im-x-mark has-background-info is-size-5 m-1 p-3 pb-1 task-actions-close"></span>
+            </div>
+            <span class="im im-plus has-background-info is-size-5 p-3 task-actions-open"></span>
+        </div>
+
+        <div class="column has-background-white pl-5 pr-5 is-hidden text-task">
+            <div class="field pl-3 pr-3 pt-2">
+                <label class="label">Task title</label>
+                <div class="control">
+                    <input id="title" class="input" type="text" placeholder="Between 0 to 55 letters" maxlength="55">
+                </div>
+            </div>
+
+            <div class="field pl-3 pr-3 pt-2">
+                <label class="label">Task message</label>
+                <div class="control">
+                    <textarea id="message" class="textarea" placeholder="Between 0 to 500 letters " maxlength="500"
+                        value=""></textarea>
+                </div>
+            </div>
+
+            <div class="field pl-3 pr-3 pt-2">
+                <label class="label">Remind timing</label>
+                <div class="control">
+                    <input id="date" class="input date-selector" type="date" data-color="info" value="">
+                </div>
+                <!-- <div class="control has-icons-left mt-2">
+                    <input id="time" type="input" class="input time-selector" value="" readonly>
+                    <span class="icon is-left">
+                        <i class="im im-clock-o"></i>
+                    </span>
+                </div> -->
+                <input type="text" id="time" data-type="time-modal">
+            </div>
+
+            <div class="field pl-3 pr-3 pt-2">
+                <div class="control is-flex is-align-items-end">
+                    <input id="important" type="checkbox" class="checkbox has-text-info important-check">
+                    <span class="is-size-5 important-text">&nbsp;&nbsp;Important</span>
+                </div>
+            </div>
+
+            <div class="field is-grouped pl-3 pr-3 pt-2">
+                <div class="control">
+                    <input id="submit" type="submit" onclick="validateTextData()" class="button is-info"
+                        value="Add task">
+                    <input id="update" type="submit" class="button is-info is-hidden" value="Update">
+                </div>
+                <div class="control">
+                    <button class="button is-info is-light cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="card-footer is-hidden drag-panel">
+            <a class="card-footer-item drag-panel-finished">Finished</a>
+            <a class="card-footer-item drag-panel-deleted">Delete</a>
+            <a class="card-footer-item drag-panel-cancel">Cancel</a>
+        </footer>
+
+        <div class="modal task-completed">
+            <div class="modal-background"></div>
+            <div class="modal-content px-5">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title task-completed-title"></p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content task-completed-content"></div>
+                    </div>
+                    <footer class="card-footer">
+                        <a class="card-footer-item task-completed-actions">Finished</a>
+                        <a class="card-footer-item task-completed-actions">Snooze</a>
+                        <a class="card-footer-item task-completed-actions">Delete</a>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+        <span class="flyNote">
+            <span class="flyNote-content">
+            </span>
+        </span>
+
+        <script src="assets/js/bulma-calendar.min.js"></script>
+        <script src="assets/js/script.js"></script>
+        <script src="assets/js/time-model.js"></script>
+        <script type="text/javascript">
+            showTextData();
+
+            //task-click-event
+            let dtTag = document.querySelectorAll("details");
+            let srTag = document.querySelectorAll("details > summary");
+            let emTag = document.querySelectorAll("details > summary > em");
+            for (let dtKey = 0; dtKey < dtTag.length; dtKey++) {
+                taskOnToggle(dtTag, srTag, emTag);
+
+                dtTag[dtKey].addEventListener('dblclick', function () {
+                    let i = 0;
+                    do {
+                        dtTag[i].open = false;
+                        let chkBtn = document.createElement("input");
+                        chkBtn.setAttribute("type", "checkbox");
+                        chkBtn.setAttribute("class", "dtCheck");
+                        emTag[i].innerHTML = '';
+                        emTag[i].appendChild(chkBtn);
+                        i++;
+                    } while (i < dtTag.length)
+
+                    let dragPanel = document.querySelector(".drag-panel");
+                    let dragPanel_cancel = document.querySelector(".drag-panel-cancel");
+                    let dragPanel_finished = document.querySelector(".drag-panel-finished");
+                    let dragPanel_deleted = document.querySelector(".drag-panel-deleted");
+                    let dtCheck = document.querySelectorAll('.dtCheck');
+
+                    dtCheck[dtKey].checked = true;
+                    dtCheck[dtKey].setAttribute("task-id", "taskKey_" + dtTag[dtKey].getAttribute("task-key"));
+
+                    for (let checkKey in dtCheck) {
+                        dtCheck[checkKey].onclick = () => {
+                            if (dtCheck[checkKey].checked === true) {
+                                dtCheck[checkKey].checked = true;
+                                dtCheck[checkKey].setAttribute("task-id", "taskKey_" + dtTag[dtKey].getAttribute("task-key"));
+                            }
+                            else {
+                                dtCheck[checkKey].checked = false;
+                            }
+                        }
+                    }
+
+                    dragPanel.classList.remove("is-hidden");
+                    taskActions.classList.add("is-hidden");
+
+                    function clearChecks() {
+                        let i = 0; do { emTag[i].innerHTML = '2m'; i++; } while (i < dtTag.length);
+                        setTimeout(function () {
+                            dragPanel.classList.add("is-hidden");
+                        }, 200)
+                    }
+
+                    dragPanel_cancel.onclick = () => {
+                        clearChecks();
+                    }
+                    dragPanel_finished.onclick = () => {
+                        clearChecks();
+                        for (let checkKey in dtCheck) {
+                            if (dtCheck[checkKey].checked == true) {
+                                srTag[checkKey].classList.replace("has-background-info-light", "has-background-primary-light");
+                                let taskKey = dtTag[dtKey].getAttribute("task-key");
+                                updateChanges(taskKey, "finished", true);
+                            }
+                        }
+                        alert("hi");
+                    }
+
+                    dragPanel_deleted.onclick = () => {
+                        clearChecks();
+                        for (let checkKey in dtCheck) {
+                            if (dtCheck[checkKey].checked == true) {
+                                srTag[checkKey].classList.replace("has-background-info-light", "has-background-danger-light");
+                                srTag[checkKey].classList.add("delete-this-task");
+                                let taskKey = dtTag[dtKey].getAttribute("task-key");
+                                updateChanges(taskKey, "deleted", true);
+                            }
+                        }
+                    }
+                })
+            };
+
+            changeDarkMode(dtTag, srTag);
+
+        </script>
+</body>
+
+</html>

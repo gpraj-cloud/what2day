@@ -1,0 +1,138 @@
+.time-modal .main-modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-modal .modal-close {
+  font-size: 30px;
+  font-family: arial;
+  color: #fff8;
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  cursor: pointer;
+}
+.main-modal .modal-box {
+  background: #fff;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-box .modal-hour-block {
+  overflow-y: scroll;
+  height: 170px;
+  width: 30%;
+  font-size: 35px;
+  list-style-type: none;
+  margin: 15px 0;
+  line-height: 55px;
+  font-weight: 800;
+  font-family: arial;
+  text-align: center;
+  padding-left: 15px;
+  color: #0003;
+}
+.modal-box .modal-hour-block li {
+  cursor: pointer;
+}
+.modal-box .modal-hour-block::-webkit-scrollbar {
+  display: none;
+}
+.modal-box .modal-minute-block {
+  overflow-y: scroll;
+  height: 170px;
+  width: 30%;
+  font-size: 35px;
+  list-style-type: none;
+  margin: 15px 0;
+  line-height: 55px;
+  font-weight: 800;
+  font-family: arial;
+  text-align: center;
+  padding: 0;
+  color: #0003;
+}
+.modal-box .modal-minute-block li {
+  cursor: pointer;
+}
+.modal-box .modal-minute-block::-webkit-scrollbar {
+  display: none;
+}
+.modal-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  margin: 0 25px;
+}
+.modal-options .modal-noon:nth-child(1) {
+  -webkit-appearance: none;
+}
+.modal-options .modal-noon:nth-child(1)::after {
+  content: "AM";
+  text-align: center;
+  font-size: 26px;
+  font-family: arial;
+  font-weight: 800;
+  color: #0003;
+}
+.modal-options .modal-noon:nth-child(1):checked:after {
+  content: "AM";
+  text-align: center;
+  font-size: 26px;
+  font-family: arial;
+  font-weight: 800;
+  color: #000;
+}
+.modal-options .modal-noon:nth-child(2) {
+  -webkit-appearance: none;
+}
+.modal-options .modal-noon:nth-child(2)::after {
+  content: "PM";
+  text-align: center;
+  font-size: 26px;
+  font-family: arial;
+  font-weight: 800;
+  color: #0003;
+}
+.modal-options .modal-noon:nth-child(2):checked:after {
+  content: "PM";
+  text-align: center;
+  font-size: 26px;
+  font-family: arial;
+  font-weight: 800;
+  color: #000;
+}
+.modal-options .modal-submit {
+  padding: 5px 20px;
+  margin-top: 20px;
+  border: 1px solid #0004;
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background-color: rgb(245, 245, 245);
+  font-family: arial;
+}
+.modal-options .modal-submit:hover {
+  background-color: rgb(230, 230, 230);
+}
+.modal-selector {
+  width: 100px;
+  border: 1px solid #0003;
+  padding: 5px 7px;
+}
+.modal-selector .modal-input {
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #0009;
+  padding-left: 10px;
+}
