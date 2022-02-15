@@ -252,6 +252,15 @@ function clearTasks(clear) {
 }
 /* ----------------x----------------- */
 
+let upChange = document.querySelectorAll("input[type='radio']");
+
+for(let key = 0; key < upChange.length; key++){
+  upChange[key].onchange = () =>{
+    getDefaultSettings();
+  }
+}
+
+
 function changeDarkMode(dtTag, srTag) {
   let localKey = localStorage.getItem("settings");
   if (localKey !== null) {
@@ -540,7 +549,10 @@ function snoozedTaskActions(taskId, taskData) {
 }
 
 function checkingCurrentTask() {
-  let getDate = dt.getMonth() + 1 + "/" + dt.getDate() + "/" + dt.getFullYear();
+  
+  let getMonth = (dt.getMonth() < 10) ? "0"+(dt.getMonth()+1) : dt.getMonth()+ 1;
+  let getDate = getMonth + "/" + dt.getDate() + "/" + dt.getFullYear();
+  
   for (let getKey = 0; getKey < localStorage.length; getKey++) {
     let localKey = "taskKey_" + getKey;
     if (localStorage.getItem(localKey) !== null) {
@@ -548,6 +560,7 @@ function checkingCurrentTask() {
       let addRegEx = /\s*<\s*/;
       let localData = checkTask.split(addRegEx);
       if (localData[6] === "false" && localData[7] === "false") {
+      //-----------------------------
         if (localData[2] === getDate) {
           if (localData[3] == getTime()) {
             if (localData[4] === "true") {
@@ -565,11 +578,10 @@ function checkingCurrentTask() {
             }
           } else {
             console.log(`wait for your moment..`);
-            document
-              .querySelector(".task-completed")
-              .classList.remove("is-active");
+            document.querySelector(".task-completed").classList.remove("is-active");
           }
         }
+      //-------------------------------
       } else {
         console.log("data deleted or finished");
       }
@@ -809,7 +821,7 @@ function createTextData(taskData, taskId, placeTo) {
     let dtSummary =
       "<summary class='message-header has-background-info-light has-text-grey is-radiusless has-text-weight-normal is-size-5 py-4'><p>" +
       taskData[0] +
-      "</p><em>2m</em></summary>";
+      `</p><em><future><date>${taskData[2]}</date><time>${taskData[3]}</time></future></em></summary>`;
     let dtBody =
       "<div class='message-body is-size-5 py-3 px-4'>" + taskData[1] + "</div>";
 

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/bulma-calendar.min.css">
 </head>
 
-<body class="">
+<body>
 
     <div class="columns is-hidden-tablet m-0 main-section">
         <div
@@ -422,7 +422,7 @@
                 <div class="column px-5 py-1">
                     <div class="field px-4 pt-2">
                         <div class=" is-flex is-justify-content-center is-96x96 py-3 px-5">
-                            <img src="hello.png">
+                            <!-- <img src="hello.png"> -->
                         </div>
                         <div class="content is-small is-flex is-justify-content-space-between my-1">
                             <h5 class="has-text-grey">App name</h5>
@@ -565,7 +565,8 @@
         <script src="assets/js/script.js"></script>
         <script src="assets/js/time-model.js"></script>
         <script type="text/javascript">
-            showTextData();
+            showTextData()
+            checkingCurrentTask()
 
             //task-click-event
             let dtTag = document.querySelectorAll("details");
@@ -614,6 +615,7 @@
                         let i = 0; do { emTag[i].innerHTML = '2m'; i++; } while (i < dtTag.length);
                         setTimeout(function () {
                             dragPanel.classList.add("is-hidden");
+                            window.location = "index.html";
                         }, 200)
                     }
 
@@ -629,7 +631,6 @@
                                 updateChanges(taskKey, "finished", true);
                             }
                         }
-                        alert("hi");
                     }
 
                     dragPanel_deleted.onclick = () => {
@@ -646,9 +647,8 @@
                 })
             };
 
-            changeDarkMode(dtTag, srTag);
-
         </script>
+        <script src="assets/js/future.js"></script>
 </body>
 
 </html>
